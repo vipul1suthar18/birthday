@@ -49,12 +49,12 @@ function createEmoji() {
   }, 8000);
 }
 
-// const birthdayMessage = "Happy Birthday Tisha" + "🎂💖";
+// const birthdayMessage = "Happy Birthday Chotu" + "🎂💖";
 // let i = 0;
 
 function startTitleAnimation() {
   const el = document.getElementById("birthdayText");
-  const text = "Happy Birthday Tisha ";
+  const text = "Happy Birthday Chotu ";
 
   el.innerHTML = "";
   el.style.opacity = "1";
