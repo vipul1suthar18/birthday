@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chotu 🐣</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="popup" id="popup">
+      <div class="popup-card">
+        <h2>Hey, I made something for you 💖</h2>
+        <p>Wanna see?</p>
+
+        <div class="buttons">
+          <button class="yes" onclick="openSite()">Yes 💕</button>
+          <button class="no" onclick="noClick()">No 🙈</button>
+        </div>
+
+        <div class="no-msg" id="noMsg">
+          Too bad 😌 you're seeing it anyway😝
+        </div>
+      </div>
+    </div>
+
+    <div class="main" id="main">
+      <div class="ambient-sparkles" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="hero">
+        <h1 id="birthdayText"></h1>
+
+        <div class="letter-intro" id="letterIntro">
+          <p>I wrote something for you...</p>
+          <button onclick="showEnvelope()">Read it 💌</button>
+        </div>
+      </div>
+
+      <!-- Letter Section -->
+      <div class="envelope-section" id="envelopeSection">
+        <div class="letter letter-reveal" id="letter">
+          <div class="paper-note postcard">
+            <span class="stamp" aria-hidden="true"></span>
+            <span class="postmark" aria-hidden="true"></span>
+            <h2 class="handwritten">Dear Chotu 💖</h2>
+            <p><strong>Happy Birthday.</strong></p>
+            <p>
+              I don&rsquo;t even know where to begin, because there are so many
+              things I want to say to you.
+            </p>
+            <p>
+              First of all, I just want you to know how incredibly special you
+              are. Not just today, not just on your birthday, but every single
+              day. You have this way of making everything around you feel
+              lighter, warmer, and happier without even trying. You probably
+              don&rsquo;t realize it, but your presence alone makes a difference
+              in people&rsquo;s lives &mdash; especially mine.
+            </p>
+            <p>
+              I&rsquo;m really grateful to have you in my life. Grateful for
+              your kindness, your smile, your energy, your little quirks, and
+              the way you care. You&rsquo;re the kind of person who leaves a
+              positive mark wherever you go, and that&rsquo;s something rare and
+              beautiful.
+            </p>
+            <p>
+              Sometimes I think about how lucky I am to know you. To talk to
+              you. To laugh with you. To share random moments, deep
+              conversations, and everything in between. Even the smallest
+              interactions with you mean more to me than I can properly explain.
+            </p>
+            <p>
+              You deserve so much happiness, Tisha. You deserve to wake up every
+              day feeling loved, appreciated, and excited about life. You
+              deserve dreams that come true, goals that turn into reality, and a
+              future filled with beautiful experiences.
+            </p>
+            <p>
+              I hope this year brings you growth, confidence, peace, and
+              countless reasons to smile. I hope you discover new things about
+              yourself, chase what truly makes you happy, and never doubt how
+              amazing you are.&nbsp;Even on days when you feel tired, unsure, or
+              overwhelmed, I hope you know there is someone out there who
+              believes in you, supports you, and cares about you more than words
+              can say.
+            </p>
+            <p>
+              I made this little website for you because I wanted to give you
+              something different. Something personal. Something that shows a
+              small part of how much you mean to me. It&rsquo;s not perfect, but
+              it comes straight from the heart.
+            </p>
+            <!-- <p>
+            Thank you for being you.<br />
+            Thank you for existing.<br />
+            Thank you for making the world a little brighter.
+          </p> -->
+            <!-- <p>
+            Happy Birthday, Tisha 🎂💖<br />
+            May this year be kind to you, and may all your wishes slowly find
+            their way to you.
+          </p> -->
+            <p>
+              With lots of love,<br />
+              &mdash; Someone who truly cares 🐣
+            </p>
+          </div>
+        </div>
+        <div class="sequence-trigger">
+          <button class="sequence-btn" id="sequenceBtn" type="button">
+            Reveal the moment
+          </button>
+        </div>
+        <section class="memory-sequence" id="memorySequence" aria-hidden="true">
+          <div class="memory-grid memory-collage" id="memoryGrid">
+            <button
+              class="memory-card memory-card-a"
+              type="button"
+              data-note="That smile always made the day feel lighter."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 1</span>
+              <span class="memory-tag">01</span>
+            </button>
+            <button
+              class="memory-card memory-card-b"
+              type="button"
+              data-note="A small moment, a big place in my heart."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 2</span>
+              <span class="memory-tag">02</span>
+            </button>
+            <button
+              class="memory-card memory-card-c"
+              type="button"
+              data-note="You turned ordinary days into tiny celebrations."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 3</span>
+              <span class="memory-tag">03</span>
+            </button>
+            <button
+              class="memory-card memory-card-d"
+              type="button"
+              data-note="Still one of my favorite memories of us."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 4</span>
+              <span class="memory-tag">04</span>
+            </button>
+            <button
+              class="memory-card memory-card-e"
+              type="button"
+              data-note="Soft, simple, and somehow unforgettable."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 5</span>
+              <span class="memory-tag">05</span>
+            </button>
+            <button
+              class="memory-card memory-card-f"
+              type="button"
+              data-note="Thank you for being part of my favorite days."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 6</span>
+              <span class="memory-tag">06</span>
+            </button>
+          </div>
+          <div class="memory-hint">Press &amp; hold to read</div>
+        </section>
+      </div>
+
+      <div class="memory-modal" id="memoryModal" aria-hidden="true">
+        <div class="memory-modal-card" role="dialog" aria-modal="true">
+          <button class="memory-close" type="button" id="memoryClose">
+            Close
+          </button>
+          <div class="memory-modal-text" id="memoryModalText"></div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
