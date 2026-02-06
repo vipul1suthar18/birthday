@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Chotu 🐣</title>
 
     <link
@@ -56,74 +57,105 @@
 
       <!-- Letter Section -->
       <div class="envelope-section" id="envelopeSection">
-        <div class="letter letter-reveal" id="letter">
-          <div class="paper-note postcard">
-            <span class="stamp" aria-hidden="true"></span>
-            <span class="postmark" aria-hidden="true"></span>
-            <h2 class="handwritten">Dear Chotu 💖</h2>
-            <p><strong>Happy Birthday.</strong></p>
-            <p>
-              I don&rsquo;t even know where to begin, because there are so many
-              things I want to say to you.
-            </p>
-            <p>
-              First of all, I just want you to know how incredibly special you
-              are. Not just today, not just on your birthday, but every single
-              day. You have this way of making everything around you feel
-              lighter, warmer, and happier without even trying. You probably
-              don&rsquo;t realize it, but your presence alone makes a difference
-              in people&rsquo;s lives &mdash; especially mine.
-            </p>
-            <p>
-              I&rsquo;m really grateful to have you in my life. Grateful for
-              your kindness, your smile, your energy, your little quirks, and
-              the way you care. You&rsquo;re the kind of person who leaves a
-              positive mark wherever you go, and that&rsquo;s something rare and
-              beautiful.
-            </p>
-            <p>
-              Sometimes I think about how lucky I am to know you. To talk to
-              you. To laugh with you. To share random moments, deep
-              conversations, and everything in between. Even the smallest
-              interactions with you mean more to me than I can properly explain.
-            </p>
-            <p>
-              You deserve so much happiness, Chotu. You deserve to wake up every
-              day feeling loved, appreciated, and excited about life. You
-              deserve dreams that come true, goals that turn into reality, and a
-              future filled with beautiful experiences.
-            </p>
-            <p>
-              I hope this year brings you growth, confidence, peace, and
-              countless reasons to smile. I hope you discover new things about
-              yourself, chase what truly makes you happy, and never doubt how
-              amazing you are.&nbsp;Even on days when you feel tired, unsure, or
-              overwhelmed, I hope you know there is someone out there who
-              believes in you, supports you, and cares about you more than words
-              can say.
-            </p>
-            <p>
-              I made this little website for you because I wanted to give you
-              something different. Something personal. Something that shows a
-              small part of how much you mean to me. It&rsquo;s not perfect, but
-              it comes straight from the heart.
-            </p>
-            <!-- <p>
-            Thank you for being you.<br />
-            Thank you for existing.<br />
-            Thank you for making the world a little brighter.
-          </p> -->
-            <!-- <p>
-            Happy Birthday, Chotu 🎂💖<br />
-            May this year be kind to you, and may all your wishes slowly find
-            their way to you.
-          </p> -->
-            <p>
-              With lots of love,<br />
-              &mdash; Someone who truly cares 🐣
-            </p>
+        <div class="sweet-letter" id="sweetLetter">
+          <div
+            class="sweet-envelope"
+            onclick="openSweetLetter()"
+            role="button"
+            tabindex="0"
+          >
+            <ul class="sweet-envelopeHeader">
+              <li>
+                <p class="sweet-envelopeHeader__from">from:</p>
+                <p class="sweet-envelopeHeader__from" id="sweetFrom">Vipul</p>
+              </li>
+              <li>
+                <p class="sweet-envelopeHeader__to">to:</p>
+                <p class="sweet-envelopeHeader__to" id="sweetTo">Chotu 💕</p>
+              </li>
+            </ul>
+            <svg
+              class="sweet-cover"
+              id="sweetCover"
+              viewBox="0 0 500 300"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M 0 0 L 500 0 L 275 150 Q 250 175 225 150 L 0 0 Z" />
+            </svg>
+            <div class="sweet-letterSheet" id="sweetLetterSheet">
+              <h2 class="sweet-letterSheet__title">Dear Chotu 💖</h2>
+              <div class="sweet-letterSheet__body">
+                <p><strong>Happy Birthday.</strong></p>
+                <p>
+                  I don&rsquo;t even know where to begin, because there are so
+                  many things I want to say to you.
+                </p>
+                <p>
+                  First of all, I just want you to know how incredibly special
+                  you are. Not just today, not just on your birthday, but every
+                  single day. You have this way of making everything around you
+                  feel lighter, warmer, and happier without even trying. You
+                  probably don&rsquo;t realize it, but your presence alone makes
+                  a difference in people&rsquo;s lives &mdash; especially mine.
+                </p>
+                <p>
+                  I&rsquo;m really grateful to have you in my life. Grateful for
+                  your kindness, your smile, your energy, your little quirks,
+                  and the way you care. You&rsquo;re the kind of person who
+                  leaves a positive mark wherever you go, and that&rsquo;s
+                  something rare and beautiful.
+                </p>
+                <p>
+                  Sometimes I think about how lucky I am to know you. To talk to
+                  you. To laugh with you. To share random moments, deep
+                  conversations, and everything in between. Even the smallest
+                  interactions with you mean more to me than I can properly
+                  explain.
+                </p>
+                <p>
+                  You deserve so much happiness, Chotu. You deserve to wake up
+                  every day feeling loved, appreciated, and excited about life.
+                  You deserve dreams that come true, goals that turn into
+                  reality, and a future filled with beautiful experiences.
+                </p>
+                <p>
+                  I hope this year brings you growth, confidence, peace, and
+                  countless reasons to smile. I hope you discover new things
+                  about yourself, chase what truly makes you happy, and never
+                  doubt how amazing you are.&nbsp;Even on days when you feel
+                  tired, unsure, or overwhelmed, I hope you know there is
+                  someone out there who believes in you, supports you, and cares
+                  about you more than words can say.
+                </p>
+                <p>
+                  I made this little website for you because I wanted to give
+                  you something different. Something personal. Something that
+                  shows a small part of how much you mean to me. It&rsquo;s not
+                  perfect, but it comes straight from the heart.
+                </p>
+                <p>
+                  With lots of love,<br />
+                  &mdash; Someone who truly cares 🐣
+                </p>
+              </div>
+            </div>
           </div>
+          <svg
+            class="sweet-clickHere"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 7L5.5 5.5M15 7L16.5 5.5M5.5 16.5L7 15M11 5L11 3M5 11L3 11M17.1603 16.9887L21.0519 15.4659C21.4758 15.3001 21.4756 14.7003 21.0517 14.5346L11.6992 10.8799C11.2933 10.7213 10.8929 11.1217 11.0515 11.5276L14.7062 20.8801C14.8719 21.304 15.4717 21.3042 15.6375 20.8803L17.1603 16.9887Z"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </div>
+        <div class="sweet-shadowLetter" id="sweetShadowLetter"></div>
         <div class="sequence-trigger">
           <button class="sequence-btn" id="sequenceBtn" type="button">
             Reveal the moment
@@ -131,6 +163,15 @@
         </div>
         <section class="memory-sequence" id="memorySequence" aria-hidden="true">
           <div class="memory-grid memory-collage" id="memoryGrid">
+            <div class="memory-player" aria-label="Memory music player">
+              <div class="memory-player__cover"></div>
+              <button class="memory-player__btn" id="memoryPlay" type="button">
+                Play
+              </button>
+              <div class="memory-player__wave"></div>
+              <div class="memory-player__note">Add your song</div>
+              <audio id="memoryAudio" preload="none" src=""></audio>
+            </div>
             <button
               class="memory-card memory-card-a"
               type="button"
@@ -184,6 +225,24 @@
               <span class="memory-tape"></span>
               <span class="memory-placeholder">Memory 6</span>
               <span class="memory-tag">06</span>
+            </button>
+            <button
+              class="memory-card memory-card-g"
+              type="button"
+              data-note="A little photo that still makes me smile."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 7</span>
+              <span class="memory-tag">07</span>
+            </button>
+            <button
+              class="memory-card memory-card-h"
+              type="button"
+              data-note="One more moment I never want to forget."
+            >
+              <span class="memory-tape"></span>
+              <span class="memory-placeholder">Memory 8</span>
+              <span class="memory-tag">08</span>
             </button>
           </div>
           <div class="memory-hint">Press &amp; hold to read</div>

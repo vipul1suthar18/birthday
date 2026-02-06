@@ -92,7 +92,7 @@ function showEnvelope() {
     hero.classList.add("compact");
   }
 
-  const letter = document.getElementById("letter");
+  const letter = document.getElementById("sweetLetter");
   if (letter) {
     setTimeout(() => {
       letter.classList.add("show");
@@ -108,7 +108,7 @@ const memoryClose = document.getElementById("memoryClose");
 
 if (sequenceBtn && memorySequence) {
   sequenceBtn.addEventListener("click", () => {
-    const letter = document.getElementById("letter");
+    const letter = document.getElementById("sweetLetter");
     const envelopeSection = document.getElementById("envelopeSection");
     const main = document.getElementById("main");
     if (letter) {
@@ -177,6 +177,38 @@ if (memoryModal) {
   });
 }
 
+const sweetCover = document.getElementById("sweetCover");
+const sweetClickHere = document.querySelector(".sweet-clickHere");
+const sweetLetterSheet = document.getElementById("sweetLetterSheet");
+const sweetLetter = document.getElementById("sweetLetter");
+const sweetShadowLetter = document.getElementById("sweetShadowLetter");
+const sweetEnvelope = document.querySelector(".sweet-envelope");
+
+function openSweetLetter() {
+  if (!sweetCover || !sweetLetterSheet || !sweetLetter) return;
+  sweetCover.classList.add("open");
+  setTimeout(() => {
+    sweetLetterSheet.style.zIndex = "2";
+    if (sweetClickHere) {
+      sweetClickHere.style.display = "none";
+    }
+    sweetLetter.style.animationIterationCount = "1";
+    if (sweetShadowLetter) {
+      sweetShadowLetter.style.animationIterationCount = "1";
+    }
+    sweetLetterSheet.classList.add("zoomIn");
+  }, 1500);
+}
+
+if (sweetEnvelope) {
+  sweetEnvelope.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openSweetLetter();
+    }
+  });
+}
+
 // Fallback for older mobile browsers without dvh support
 function setDynamicHeight() {
   document.documentElement.style.setProperty(
@@ -186,3 +218,30 @@ function setDynamicHeight() {
 }
 window.addEventListener("resize", setDynamicHeight);
 setDynamicHeight();
+
+const memoryAudio = document.getElementById("memoryAudio");
+const memoryPlay = document.getElementById("memoryPlay");
+
+if (memoryAudio && memoryPlay) {
+  const setPlaying = (isPlaying) => {
+    memoryPlay.classList.toggle("is-playing", isPlaying);
+    memoryPlay.textContent = isPlaying ? "Pause" : "Play";
+  };
+
+  memoryPlay.addEventListener("click", async () => {
+    if (!memoryAudio.src) return;
+    if (memoryAudio.paused) {
+      try {
+        await memoryAudio.play();
+        setPlaying(true);
+      } catch (err) {
+        console.error("Audio play failed", err);
+      }
+    } else {
+      memoryAudio.pause();
+      setPlaying(false);
+    }
+  });
+
+  memoryAudio.addEventListener("ended", () => setPlaying(false));
+}
