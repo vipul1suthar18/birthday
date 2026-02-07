@@ -491,7 +491,7 @@ body::after {
   z-index: 4;
   position: relative;
   padding: 24px 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .sequence-trigger {
@@ -523,16 +523,16 @@ body::after {
 }
 
 .memory-sequence {
-  position: absolute;
+  position: fixed;
   inset: 0;
   display: grid;
   place-items: center;
-  gap: 18px;
+  gap: 0;
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
   transition: 1s ease;
-  padding: 24px 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -546,6 +546,7 @@ body::after {
   width: min(680px, 92vw);
   display: grid;
   gap: 16px;
+  place-items: center;
 }
 
 .memory-card {
@@ -600,7 +601,7 @@ body::after {
 
 .memory-collage .memory-card {
   position: absolute;
-  width: clamp(120px, 15vw, 170px);
+  width: clamp(120px, 16vw, 180px);
   aspect-ratio: 1 / 1;
   border-radius: 16px;
 }
@@ -650,6 +651,30 @@ body::after {
   background: #f39ab6;
 }
 
+.memory-player__progress {
+  width: 80%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 180, 200, 0.35);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.memory-player__progress-bar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6f91, #ffb3c7);
+  border-radius: inherit;
+  transition: width 0.2s ease;
+}
+
+.memory-player__time {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: rgba(90, 64, 80, 0.6);
+}
+
 .memory-player__wave {
   display: none;
 }
@@ -667,44 +692,38 @@ body::after {
 
 .memory-card-a {
   top: 6%;
-  left: 8%;
-  transform: rotate(-6deg);
+  left: 10%;
+  transform: rotate(-7deg);
 }
 .memory-card-b {
-  top: 8%;
-  right: 8%;
-  transform: rotate(5deg);
-}
-.memory-card-c {
-  top: 30%;
-  right: 0%;
+  top: 6%;
+  right: 10%;
   transform: rotate(6deg);
 }
-.memory-card-d {
-  right: 6%;
-  bottom: 20%;
-  transform: rotate(-5deg);
+.memory-card-c {
+  top: 35%;
+  right: 2%;
+  transform: rotate(8deg);
 }
-.memory-card-e {
-  bottom: 10%;
-  left: 8%;
+.memory-card-d {
+  bottom: 8%;
+  left: 12%;
   transform: rotate(4deg);
 }
+.memory-card-e {
+  bottom: 8%;
+  right: 12%;
+  transform: rotate(-5deg);
+}
 .memory-card-f {
-  bottom: 6%;
-  right: 36%;
-  transform: rotate(-6deg);
+  display: none;
 }
 
 .memory-card-g {
-  top: 32%;
-  left: 0%;
-  transform: rotate(-4deg);
+  display: none;
 }
 .memory-card-h {
-  bottom: 26%;
-  left: 46%;
-  transform: rotate(4deg);
+  display: none;
 }
 
 .memory-tape {
@@ -1602,28 +1621,15 @@ body::after {
     right: 6%;
   }
   .memory-card-c {
-    top: 20%;
+    top: 32%;
     right: 0%;
   }
   .memory-card-d {
-    right: 0%;
-    top: 56%;
+    bottom: 6%;
+    left: 8%;
   }
   .memory-card-e {
-    bottom: 8%;
-    left: 6%;
-  }
-  .memory-card-f {
-    bottom: 8%;
-    right: 10%;
-  }
-
-  .memory-card-g {
-    top: 22%;
-    left: 0%;
-  }
-  .memory-card-h {
-    bottom: 24%;
-    left: 40%;
+    bottom: 6%;
+    right: 8%;
   }
 }

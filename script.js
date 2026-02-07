@@ -221,6 +221,8 @@ setDynamicHeight();
 
 const memoryAudio = document.getElementById("memoryAudio");
 const memoryPlay = document.getElementById("memoryPlay");
+const memoryProgress = document.getElementById("memoryProgress");
+const memoryTime = document.getElementById("memoryTime");
 
 if (memoryAudio && memoryPlay) {
   const setPlaying = (isPlaying) => {
@@ -244,4 +246,24 @@ if (memoryAudio && memoryPlay) {
   });
 
   memoryAudio.addEventListener("ended", () => setPlaying(false));
+
+  const formatTime = (time) => {
+    if (!Number.isFinite(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  };
+
+  const updateProgress = () => {
+    if (!memoryProgress || !memoryTime) return;
+    const duration = memoryAudio.duration || 0;
+    const current = memoryAudio.currentTime || 0;
+    const pct = duration ? (current / duration) * 100 : 0;
+    memoryProgress.style.width = `${pct}%`;
+    memoryTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+  };
+
+  memoryAudio.addEventListener("loadedmetadata", updateProgress);
+  memoryAudio.addEventListener("timeupdate", updateProgress);
+  memoryAudio.addEventListener("seeked", updateProgress);
 }
