@@ -9,6 +9,7 @@ body {
   width: 100%;
   min-height: 100%;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 /* body {
@@ -200,6 +201,10 @@ body::after {
   display: none;
 }
 
+.main.memory-mode #birthdayText {
+  display: none;
+}
+
 .main h1 {
   color: white;
   font-size: 42px;
@@ -380,6 +385,11 @@ body::after {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.15);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-wrap: balance;
 }
 
 @keyframes softGlow {
@@ -503,8 +513,6 @@ body::after {
   padding: 24px 0;
   overflow: visible;
 }
-
-
 
 .envelope-section.show {
   opacity: 1;
@@ -753,18 +761,50 @@ body::after {
 .sweet-letterSheet__title {
   width: 90%;
   color: #ff6f91;
-  font-size: calc(1.6vw + 1.4vh);
+  font-size: calc(1.8vw + 1.6vh);
   font-family: "Pacifico", cursive;
 }
 
 .sweet-letterSheet__body {
   color: #6a4b3a;
-  font-size: calc(1.2vw + 1vh);
+  font-size: calc(1.4vw + 1.2vh);
   font-family: "Patrick Hand", cursive;
   line-height: 1.6;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   padding-right: 6px;
   flex: 1;
+}
+
+.reveal-more-btn {
+  margin-top: 16px;
+  align-self: center;
+  background: #ff6f91;
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: 0.4s ease;
+}
+
+.reveal-more-btn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.reveal-more-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.reveal-more-under {
+  margin-top: 14px;
 }
 
 .sweet-cover {
@@ -814,6 +854,257 @@ body::after {
   background-color: rgba(120, 90, 110, 0.4);
   animation: sweet-shadow-lift 3s ease-in-out infinite;
   border-radius: 100% 100% 100% 100%;
+}
+
+.memory-section {
+  display: none;
+  min-height: 100svh;
+  min-height: 100dvh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  padding: 32px 16px 60px;
+}
+
+.memory-section.show {
+  display: block;
+}
+
+.memory-shell {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.memory-title {
+  font-family: "Pacifico", cursive;
+  font-size: clamp(30px, 4vw, 44px);
+  color: #ff6f91;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 10px rgba(255, 150, 180, 0.35);
+}
+
+.memory-subtitle {
+  font-family: "Quicksand", sans-serif;
+  color: rgba(90, 64, 80, 0.7);
+  margin-bottom: 22px;
+}
+
+.memory-board {
+  position: relative;
+  margin: 0 auto;
+  width: min(620px, 92vw);
+  height: clamp(720px, 130vw, 860px);
+  border-radius: 24px;
+  background:
+    linear-gradient(150deg, rgba(255, 245, 250, 0.92), rgba(255, 225, 238, 0.9));
+  box-shadow:
+    0 22px 40px rgba(90, 64, 80, 0.18),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.memory-board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(150, 120, 135, 0.05),
+      rgba(150, 120, 135, 0.05) 1px,
+      transparent 1px,
+      transparent 18px
+    ),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.6), transparent 55%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.memory-grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.memory-card {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 10px;
+  border: 2px dashed rgba(120, 90, 105, 0.6);
+  box-shadow: 0 14px 28px rgba(90, 64, 80, 0.16);
+}
+
+.memory-photo {
+  border-radius: 12px;
+  background: rgba(255, 230, 238, 0.9);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-family: "Patrick Hand", cursive;
+  color: #7a5567;
+}
+
+.memory-card-a {
+  width: 150px;
+  height: 180px;
+  top: 8%;
+  left: 12%;
+  transform: rotate(-6deg);
+}
+
+.memory-card-b {
+  width: 170px;
+  height: 200px;
+  top: 4%;
+  right: 16%;
+  transform: rotate(5deg);
+}
+
+.memory-card-c {
+  width: 140px;
+  height: 170px;
+  top: 34%;
+  left: 10%;
+  transform: rotate(4deg);
+}
+
+.memory-card-d {
+  width: 180px;
+  height: 220px;
+  top: 26%;
+  right: 8%;
+  transform: rotate(-4deg);
+}
+
+.memory-card-e {
+  width: 150px;
+  height: 180px;
+  bottom: 24%;
+  left: 10%;
+  transform: rotate(6deg);
+}
+
+.memory-card-f {
+  width: 160px;
+  height: 190px;
+  bottom: 10%;
+  left: 26%;
+  transform: rotate(-3deg);
+}
+
+.memory-card-g {
+  width: 190px;
+  height: 220px;
+  bottom: 8%;
+  right: 12%;
+  transform: rotate(-6deg);
+}
+
+.memory-message {
+  position: absolute;
+  right: 12%;
+  top: 40%;
+  width: 220px;
+  font-family: "Patrick Hand", cursive;
+  color: #6a4b3a;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.memory-message p + p {
+  margin-top: 8px;
+}
+
+.memory-floral {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.85;
+  filter: drop-shadow(0 10px 16px rgba(90, 64, 80, 0.2));
+  pointer-events: none;
+}
+
+.memory-floral-a {
+  width: 220px;
+  height: 220px;
+  left: -40px;
+  top: 18%;
+  background:
+    radial-gradient(circle at 30% 30%, #ffd1e1, #f4a3bf 60%, transparent 70%),
+    radial-gradient(circle at 70% 70%, #ffc1d5, #f19cb8 60%, transparent 70%);
+}
+
+.memory-floral-b {
+  width: 200px;
+  height: 200px;
+  left: -20px;
+  bottom: 6%;
+  background:
+    radial-gradient(circle at 30% 30%, #ffd1e1, #f4a3bf 60%, transparent 70%),
+    radial-gradient(circle at 70% 70%, #ffc1d5, #f19cb8 60%, transparent 70%);
+}
+
+.memory-tape {
+  position: absolute;
+  width: 120px;
+  height: 34px;
+  background: rgba(255, 240, 230, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(90, 64, 80, 0.12);
+  pointer-events: none;
+}
+
+.memory-tape-a {
+  top: 16%;
+  right: 18%;
+  transform: rotate(-8deg);
+}
+
+.memory-tape-b {
+  top: 58%;
+  left: 42%;
+  transform: rotate(6deg);
+}
+
+@media (max-width: 768px) {
+  .memory-board {
+    height: clamp(640px, 150vw, 820px);
+  }
+
+  .memory-message {
+    right: 8%;
+    width: 200px;
+    font-size: 13px;
+  }
+
+  .memory-card-a {
+    width: 130px;
+    height: 160px;
+  }
+  .memory-card-b {
+    width: 150px;
+    height: 180px;
+  }
+  .memory-card-c {
+    width: 120px;
+    height: 150px;
+  }
+  .memory-card-d {
+    width: 160px;
+    height: 200px;
+  }
+  .memory-card-e {
+    width: 130px;
+    height: 160px;
+  }
+  .memory-card-f {
+    width: 140px;
+    height: 170px;
+  }
+  .memory-card-g {
+    width: 170px;
+    height: 200px;
+  }
 }
 
 @keyframes sweet-zoom-sheet-up {
@@ -1224,8 +1515,13 @@ body::after {
   }
 
   #birthdayText {
-    font-size: 32px;
-    line-height: 1.1;
+    font-size: clamp(22px, 6.2vw, 30px);
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .title-emoji {
+    font-size: calc(1em - 6px);
   }
 
   .letter-intro p {
@@ -1254,7 +1550,6 @@ body::after {
     height: calc(var(--vh, 1vh) * 100);
     min-height: 100svh;
     padding: 12px 0;
-    margin-top: 50%;
   }
 
   .sweet-letter {
@@ -1283,5 +1578,4 @@ body::after {
     margin-right: auto;
     transform: none; /* mobile should be stable */
   }
-
 }

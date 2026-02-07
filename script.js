@@ -112,6 +112,18 @@ const sweetLetterSheet = document.getElementById("sweetLetterSheet");
 const sweetLetter = document.getElementById("sweetLetter");
 const sweetShadowLetter = document.getElementById("sweetShadowLetter");
 const sweetEnvelope = document.querySelector(".sweet-envelope");
+const letterBody = document.querySelector(".sweet-letterSheet__body");
+const revealMoreBtn = document.getElementById("revealMoreBtn");
+const memorySection = document.getElementById("memorySection");
+const envelopeSection = document.getElementById("envelopeSection");
+
+const updateRevealState = () => {
+  if (!letterBody || !revealMoreBtn) return;
+  const atEnd =
+    letterBody.scrollTop + letterBody.clientHeight >=
+    letterBody.scrollHeight - 6;
+  revealMoreBtn.classList.toggle("is-visible", atEnd);
+};
 
 function openSweetLetter() {
   if (!sweetCover || !sweetLetterSheet || !sweetLetter) return;
@@ -126,6 +138,7 @@ function openSweetLetter() {
       sweetShadowLetter.style.animationIterationCount = "1";
     }
     sweetLetterSheet.classList.add("zoomIn");
+    setTimeout(updateRevealState, 200);
   }, 1500);
 }
 
@@ -135,6 +148,32 @@ if (sweetEnvelope) {
       event.preventDefault();
       openSweetLetter();
     }
+  });
+}
+
+if (letterBody) {
+  letterBody.addEventListener("scroll", updateRevealState);
+  window.addEventListener("resize", updateRevealState);
+}
+
+if (revealMoreBtn) {
+  revealMoreBtn.addEventListener("click", () => {
+    if (envelopeSection) {
+      envelopeSection.style.display = "none";
+    }
+    const main = document.getElementById("main");
+    if (main) {
+      main.classList.add("memory-mode");
+    }
+    if (memorySection) {
+      memorySection.classList.add("show");
+      memorySection.setAttribute("aria-hidden", "false");
+    }
+    document.body.classList.remove("lock-scroll");
+    document.documentElement.classList.remove("lock-scroll");
+    const scrollY = Number.parseInt(document.body.dataset.scrollY || "0", 10);
+    document.body.style.top = "";
+    window.scrollTo(0, scrollY);
   });
 }
 
