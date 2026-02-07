@@ -4,7 +4,10 @@
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
+  width: 100%;
+  min-height: 100%;
   overflow-x: hidden;
 }
 
@@ -20,6 +23,8 @@ html {
 body {
   margin: 0;
   min-height: 100svh; /* mobile-safe viewport */
+  min-height: 100dvh;
+  min-height: calc(var(--vh, 1vh) * 100);
   overflow-x: hidden;
   overflow-y: auto;
   font-family: "Pacifico", sans-serif;
@@ -103,6 +108,9 @@ body::after {
 .popup {
   position: fixed;
   inset: 0;
+  min-height: 100svh;
+  min-height: 100dvh;
+  min-height: calc(var(--vh, 1vh) * 100);
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -1490,10 +1498,6 @@ body::after {
   }
 
   .popup-card {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     width: calc(100vw - 32px);
     max-width: none;
     padding: 56px 28px;
