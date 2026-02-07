@@ -86,6 +86,11 @@ function showEnvelope() {
   document.getElementById("letterIntro").classList.add("fade-out");
 
   document.getElementById("envelopeSection").classList.add("show");
+  const scrollY = window.scrollY || window.pageYOffset;
+  document.body.dataset.scrollY = String(scrollY);
+  document.documentElement.classList.add("lock-scroll");
+  document.body.classList.add("lock-scroll");
+  document.body.style.top = `-${scrollY}px`;
 
   const hero = document.querySelector(".hero");
   if (hero) {
@@ -100,82 +105,6 @@ function showEnvelope() {
   }
 }
 
-const sequenceBtn = document.getElementById("sequenceBtn");
-const memorySequence = document.getElementById("memorySequence");
-const memoryModal = document.getElementById("memoryModal");
-const memoryModalText = document.getElementById("memoryModalText");
-const memoryClose = document.getElementById("memoryClose");
-
-if (sequenceBtn && memorySequence) {
-  sequenceBtn.addEventListener("click", () => {
-    const letter = document.getElementById("sweetLetter");
-    const envelopeSection = document.getElementById("envelopeSection");
-    const main = document.getElementById("main");
-    if (letter) {
-      letter.classList.add("fade-out");
-    }
-
-    setTimeout(() => {
-      memorySequence.classList.add("show");
-      memorySequence.setAttribute("aria-hidden", "false");
-      if (envelopeSection) {
-        envelopeSection.classList.add("show-memory");
-      }
-      if (main) {
-        main.classList.add("memory-mode");
-      }
-    }, 600);
-
-    sequenceBtn.disabled = true;
-    sequenceBtn.textContent = "Moment revealed";
-    sequenceBtn.style.display = "none";
-  });
-}
-
-document.querySelectorAll(".memory-card").forEach((card) => {
-  let holdTimer;
-  const holdDelay = 450;
-
-  const openCard = () => {
-    if (!memoryModal || !memoryModalText) return;
-    memoryModalText.textContent = card.dataset.note || "";
-    memoryModal.classList.add("show");
-    memoryModal.setAttribute("aria-hidden", "false");
-  };
-
-  const startHold = () => {
-    clearTimeout(holdTimer);
-    holdTimer = setTimeout(openCard, holdDelay);
-  };
-
-  const cancelHold = () => {
-    clearTimeout(holdTimer);
-  };
-
-  card.addEventListener("pointerdown", startHold);
-  card.addEventListener("pointerup", cancelHold);
-  card.addEventListener("pointerleave", cancelHold);
-  card.addEventListener("pointercancel", cancelHold);
-  card.addEventListener("click", openCard);
-});
-
-function closeMemoryModal() {
-  if (!memoryModal) return;
-  memoryModal.classList.remove("show");
-  memoryModal.setAttribute("aria-hidden", "true");
-}
-
-if (memoryClose) {
-  memoryClose.addEventListener("click", closeMemoryModal);
-}
-
-if (memoryModal) {
-  memoryModal.addEventListener("click", (event) => {
-    if (event.target === memoryModal) {
-      closeMemoryModal();
-    }
-  });
-}
 
 const sweetCover = document.getElementById("sweetCover");
 const sweetClickHere = document.querySelector(".sweet-clickHere");
@@ -219,51 +148,3 @@ function setDynamicHeight() {
 window.addEventListener("resize", setDynamicHeight);
 setDynamicHeight();
 
-const memoryAudio = document.getElementById("memoryAudio");
-const memoryPlay = document.getElementById("memoryPlay");
-const memoryProgress = document.getElementById("memoryProgress");
-const memoryTime = document.getElementById("memoryTime");
-
-if (memoryAudio && memoryPlay) {
-  const setPlaying = (isPlaying) => {
-    memoryPlay.classList.toggle("is-playing", isPlaying);
-    memoryPlay.textContent = isPlaying ? "Pause" : "Play";
-  };
-
-  memoryPlay.addEventListener("click", async () => {
-    if (!memoryAudio.src) return;
-    if (memoryAudio.paused) {
-      try {
-        await memoryAudio.play();
-        setPlaying(true);
-      } catch (err) {
-        console.error("Audio play failed", err);
-      }
-    } else {
-      memoryAudio.pause();
-      setPlaying(false);
-    }
-  });
-
-  memoryAudio.addEventListener("ended", () => setPlaying(false));
-
-  const formatTime = (time) => {
-    if (!Number.isFinite(time)) return "0:00";
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
-  };
-
-  const updateProgress = () => {
-    if (!memoryProgress || !memoryTime) return;
-    const duration = memoryAudio.duration || 0;
-    const current = memoryAudio.currentTime || 0;
-    const pct = duration ? (current / duration) * 100 : 0;
-    memoryProgress.style.width = `${pct}%`;
-    memoryTime.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
-  };
-
-  memoryAudio.addEventListener("loadedmetadata", updateProgress);
-  memoryAudio.addEventListener("timeupdate", updateProgress);
-  memoryAudio.addEventListener("seeked", updateProgress);
-}
