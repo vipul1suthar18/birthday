@@ -1535,6 +1535,12 @@ body::after {
     flex-direction: column;
     align-items: center; /* 🔥 THIS is the key */
     justify-content: center;
+    height: 100svh;
+    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: 100svh;
+    padding: 12px 0;
+    margin-top: 50%;
   }
 
   .sweet-letter {
